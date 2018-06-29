@@ -1,6 +1,6 @@
 {
   "name": "@moltin/react-shopkit",
-  "version": "0.0.0-semantic-release",
+  "version": "0.0.0-development",
   "license": "MIT",
   "main": "dist/shopkit.cjs.js",
   "module": "dist/shopkit.cjs.js",
@@ -9,15 +9,16 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/moltin/shopkit-react.git"
+    "url": "https://github.com/moltin/react-shopkit.git"
   },
   "bugs": {
-    "url": "https://github.com/moltin/shopkit-react/issues"
+    "url": "https://github.com/moltin/react-shopkit/issues"
   },
   "scripts": {
     "start": "yarn build -w",
     "build": "rollup -c",
-    "prebuild": "rimraf dist"
+    "prebuild": "rimraf dist",
+    "semantic-release": "semantic-release"
   },
   "dependencies": {
     "@moltin/sdk": "^3.12.1",
@@ -37,7 +38,8 @@
     "rollup": "0.62.0",
     "rollup-plugin-babel": "3.0.5",
     "rollup-plugin-filesize": "2.0.0",
-    "rollup-plugin-node-resolve": "3.3.0"
+    "rollup-plugin-node-resolve": "3.3.0",
+    "semantic-release": "^15.6.0"
   },
   "peerDependencies": {
     "react": ">= 16.3",
