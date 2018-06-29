@@ -9,10 +9,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/moltin/react-shopkit.git"
+    "url": "https://github.com/moltin/shopkit.git"
   },
   "bugs": {
-    "url": "https://github.com/moltin/react-shopkit/issues"
+    "url": "https://github.com/moltin/shopkit/issues"
   },
   "scripts": {
     "start": "yarn build -w",
@@ -22,8 +22,7 @@
   },
   "dependencies": {
     "@moltin/sdk": "^3.12.1",
-    "prop-types": "^15.6.2",
-    "rollup-plugin-uglify": "^4.0.0"
+    "prop-types": "^15.6.2"
   },
   "devDependencies": {
     "babel-core": "6.26.3",
