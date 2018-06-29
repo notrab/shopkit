@@ -25,12 +25,12 @@
     "rollup-plugin-uglify": "^4.0.0"
   },
   "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-core": "6.26.3",
+    "babel-plugin-external-helpers": "6.22.0",
     "babel-plugin-transform-class-properties": "6.24.1",
     "babel-preset-env": "1.7.0",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-3": "^6.24.1",
+    "babel-preset-react": "6.24.1",
+    "babel-preset-stage-3": "6.24.1",
     "prettier": "1.13.6",
     "pretty-quick": "1.6.0",
     "rimraf": "2.6.2",
