@@ -1,0 +1,15 @@
+# dependencies
+node_modules
+
+# build
+dist
+.next
+
+# misc
+.env.*
+*.log
+.DS_Store
+.vscode
+package-lock.json
+*.lerna_backup
+build
