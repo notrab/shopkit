@@ -10,10 +10,10 @@ Install the package from [npm](https://www.npmjs.com/package/@moltin/react-shopk
 yarn add @moltin/react-shopkit
 ```
 
-You'll now want to wrap your React project with the Shopkit provider.
+Next, inside your application, you need to wrap your root component with the `<ShopkitProvider />` and set your `clientId`. You can also set a custom `color`.
 
 ```js
-import { Shopkit as ShopkitProvider } from '@moltin/shopkit-react'
+import { Shopkit as ShopkitProvider } from '@moltin/react-shopkit'
 ​
 ReactDOM.render(
   <ShopkitProvider clientId='INSERT_CLIENT_ID'>
