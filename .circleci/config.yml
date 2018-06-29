@@ -10,7 +10,7 @@ jobs:
       - save_cache:
           paths:
             - node_modules
-          key: shopkit-dependencies-{{ checksum "package.json" }}
+          key: shopkit-deps-{{ checksum "package.json" }}
   release:
     docker:
       - image: 'circleci/node:latest'
@@ -18,7 +18,7 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - shopkit-dependencies-{{ checksum "package.json" }}
+            - shopkit-deps-{{ checksum "package.json" }}
       - run: yarn build
       - run: npx semantic-release
 workflows:
