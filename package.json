@@ -1,6 +1,6 @@
 {
   "name": "@moltin/react-shopkit",
-  "version": "0.1.0",
+  "version": "0.0.0-semantic-release",
   "license": "MIT",
   "main": "dist/shopkit.cjs.js",
   "module": "dist/shopkit.cjs.js",
