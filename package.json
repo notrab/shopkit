@@ -35,7 +35,7 @@
     "pretty-quick": "1.6.0",
     "rimraf": "2.6.2",
     "rollup": "0.62.0",
-    "rollup-plugin-babel": "3.0.6",
+    "rollup-plugin-babel": "3.0.7",
     "rollup-plugin-filesize": "2.0.0",
     "rollup-plugin-node-resolve": "3.3.0",
     "semantic-release": "15.6.0"
