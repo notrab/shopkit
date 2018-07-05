@@ -25,7 +25,8 @@ export default class Shopkit extends Component {
   }
 
   api = MoltinGateway({
-    client_id: this.props.clientId
+    client_id: this.props.clientId,
+    application: 'react-shopkit'
   })
 
   componentDidMount() {
