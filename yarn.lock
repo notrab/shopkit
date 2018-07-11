@@ -1697,9 +1697,13 @@ hook-std@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/hook-std/-/hook-std-1.0.1.tgz#fc91e6836c5b174f405dc4b57aa2228e4c599981"
 
-hosted-git-info@^2.1.4, hosted-git-info@^2.6.0:
+hosted-git-info@^2.1.4:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-2.6.1.tgz#6e4cee78b01bb849dcf93527708c69fdbee410df"
+
+hosted-git-info@^2.7.1:
+  version "2.7.1"
+  resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-2.7.1.tgz#97f236977bd6e125408930ff6de3eec6281ec047"
 
 http-cache-semantics@3.8.1:
   version "3.8.1"
@@ -2827,9 +2831,9 @@ safe-regex@^1.1.0:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
 
-semantic-release@15.6.3:
-  version "15.6.3"
-  resolved "https://registry.yarnpkg.com/semantic-release/-/semantic-release-15.6.3.tgz#3e336f421b7f7595c991609d6de3ee7f53918f2a"
+semantic-release@15.7.1:
+  version "15.7.1"
+  resolved "https://registry.yarnpkg.com/semantic-release/-/semantic-release-15.7.1.tgz#636337219fad33cfcf35dfe86d8d0a9dc9ee6c35"
   dependencies:
     "@semantic-release/commit-analyzer" "^5.0.0"
     "@semantic-release/error" "^2.2.0"
@@ -2847,7 +2851,7 @@ semantic-release@15.6.3:
     git-log-parser "^1.2.0"
     git-url-parse "^9.0.0"
     hook-std "^1.0.1"
-    hosted-git-info "^2.6.0"
+    hosted-git-info "^2.7.1"
     lodash "^4.17.4"
     marked "^0.4.0"
     marked-terminal "^3.0.0"
