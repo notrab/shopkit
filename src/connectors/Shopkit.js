@@ -1,27 +1,33 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { gateway as MoltinGateway } from '@moltin/sdk'
 
 import { Provider } from '../context'
 
 export default class Shopkit extends Component {
-  constructor(props) {
-    super(props)
-
-    if (!props.clientId) {
-      throw new Error('Please provide a Moltin client ID')
-    }
+  static PropTypes = {
+    clientId: PropTypes.string.isRequired,
+    color: PropTypes.string,
+    showCartOnSuccess: PropTypes.bool
   }
 
   static defaultProps = {
-    clientId: undefined,
     color: '#FFE285',
     showCartOnSuccess: false
   }
 
-  state = {
-    cartItems: [],
-    cartShown: false,
-    cartTotal: null
+  constructor(...args) {
+    super(...args)
+
+    if (!this.props.clientId) {
+      throw new Error('Please provide a Moltin client ID')
+    }
+
+    this.state = {
+      cartItems: [],
+      cartShown: false,
+      cartTotal: null
+    }
   }
 
   api = MoltinGateway({
