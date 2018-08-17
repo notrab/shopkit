@@ -14,11 +14,143 @@ Next, inside your application, you need to wrap your root component with the `<S
 
 ```js
 import { Shopkit as ShopkitProvider } from '@moltin/react-shopkit'
-​
+
 ReactDOM.render(
   <ShopkitProvider clientId='INSERT_CLIENT_ID'>
     <App />
   </ShopkitProvider>,
   document.querySelector('#root')
+)
+```
+
+## 🏗 Components
+
+### Button
+
+#### Props
+
+Prop | Default | Required | Description
+--- | --- | --- | ---
+`id` | `undefined` | **Yes** | Your Moltin product ID
+`cartId` | `undefined` | No | A custom cart ID (otherwise created automatically)
+`children` | `undefined` | **Yes** | A custom render function for your product
+
+#### Example
+
+```js
+import React from 'react'
+import { Button } from '@moltin/react-shopkit'
+
+export default () => (
+  <Button productId="61abf56a-194e-4e13-a717-92d2f0c9d4df">
+    {({addToCart}) => (
+      <button onClick={addToCart}>Add to Cart</button>
+    )}
+  </Button>
+)
+```
+
+### Product
+
+#### Props
+
+Prop | Default | Required | Description
+--- | --- | --- | ---
+`id` | `undefined` | **Yes** | Your Moltin product ID
+`children` | `undefined` | **Yes** | A custom render function for your product
+
+#### Example
+
+```js
+import React from 'react'
+import { Product, Button } from '@moltin/react-shopkit'
+
+export default () => (
+  <Product id="1f6eaa8a-80dc-4b1d-a66d-4cc3a1f7f3bb">
+    {({ loading, error, data }) => {
+      if (loading) return <p>Loading!</p>
+      if (error) return <p>Error occured!</p>
+
+      return (
+        <div>
+          <h2>{data.name}</h2>
+          <Button id={data.id} />
+        </div>
+      )
+    }}
+  </Product>
+)
+```
+
+### Product Grid
+
+> You will need to import `Button` if you wish add items to the cart
+
+#### Props
+
+Prop | Default | Required | Description
+--- | --- | --- | ---
+`maxProducts` | `12` | No | Set the max products per page
+`children` | `undefined` | **Yes** | A custom render function for your product list/grid
+
+#### Example
+
+```js
+import React from 'react'
+import { Product, Button } from '@moltin/react-shopkit'
+
+export default () => (
+  <Product id="1f6eaa8a-80dc-4b1d-a66d-4cc3a1f7f3bb">
+    {({ loading, error, data }) => {
+      if (loading) return <p>Loading!</p>
+      if (error) return <p>Error occured!</p>
+
+      return (
+        <div>
+          <h2>{data.name}</h2>
+          <Button id={data.id} />
+        </div>
+      )
+    }}
+  </Product>
+)
+```
+
+### Cart
+
+#### Props
+
+Prop | Default | Required | Description
+--- | --- | --- | ---
+`total`
+`count`
+`items`
+`shown`
+`goForward`
+`goBack`
+`updateCartQuantity`
+`removeFromCart`
+`handleCheckout`
+
+#### Example
+
+```js
+import React from 'react'
+import { Cart } from '@moltin/react-shopkit'
+
+export default () => (
+  <Cart>
+    {({ total, count, shown, onClick, items, updateCartQuantity, removeFromCart }) => {
+      if (loading) return <p>Loading!</p>
+      if (error) return <p>Error occured!</p>
+
+      return (
+        <div>
+          <h2>{data.name}</h2>
+          <Button id={data.id} />
+        </div>
+      )
+    }}
+  </Cart>
 )
 ```
