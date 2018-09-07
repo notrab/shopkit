@@ -38,7 +38,7 @@
     "rollup-plugin-babel": "3.0.7",
     "rollup-plugin-filesize": "2.0.0",
     "rollup-plugin-node-resolve": "3.3.0",
-    "semantic-release": "15.9.8"
+    "semantic-release": "15.9.14"
   },
   "peerDependencies": {
     "react": ">= 16.3",
