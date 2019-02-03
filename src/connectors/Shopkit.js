@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { gateway as MoltinGateway } from '@moltin/sdk'
+import { createClient, createCartIdentifier } from '@moltin/request'
 
 import { Provider } from '../context'
 
@@ -8,11 +8,13 @@ export default class Shopkit extends Component {
   static PropTypes = {
     clientId: PropTypes.string.isRequired,
     color: PropTypes.string,
+    cartId: PropTypes.string,
     showCartOnSuccess: PropTypes.bool
   }
 
   static defaultProps = {
     color: '#FFE285',
+    cartId: createCartIdentifier(),
     showCartOnSuccess: false
   }
 
@@ -30,15 +32,14 @@ export default class Shopkit extends Component {
     }
   }
 
-  api = MoltinGateway({
+  api = new createClient({
     client_id: this.props.clientId,
     application: 'react-shopkit'
   })
 
   componentDidMount() {
     this.api
-      .Cart()
-      .Items()
+      .get(`${this.props.cartId}/items`)
       .then(this.updateCartState)
       .catch(({ errors }) => console.log(errors))
   }
@@ -51,25 +52,31 @@ export default class Shopkit extends Component {
       meta
     })
 
-  _handleAddToCart = (id, qty) =>
+  _handleAddToCart = (id, quantity) =>
     this.api
-      .Cart()
-      .AddProduct(id, qty)
+      .post(`${this.props.cartId}/items`, {
+        type: 'cart_item',
+        id,
+        quantity
+      })
       .then(this.updateCartState)
       .then(this.props.showCartOnSuccess && this._showCart)
       .catch(({ errors }) => console.log(errors))
 
-  _handleQuantityChange = (itemId, quantity) =>
+  _handleQuantityChange = (id, quantity) =>
     this.api
-      .Cart()
+      .put(`${this.props.cartId}/items/${id}`, {
+        type: 'cart_item',
+        id,
+        quantity
+      })
       .UpdateItemQuantity(itemId, quantity)
       .then(this.updateCartState)
       .catch(({ errors }) => console.log(errors))
 
-  _handleRemoveFromCart = itemId =>
+  _handleRemoveFromCart = id =>
     this.api
-      .Cart()
-      .RemoveItem(itemId)
+      .delete(`${this.props.cartId}/items/${id}`)
       .then(this.updateCartState)
       .catch(({ errors }) => console.log(errors))
 
