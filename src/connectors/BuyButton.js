@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import { Consumer } from '../context'
 
-export default class ButtonConnector extends Component {
+export default class BuyButtonConnector extends Component {
   state = {
     qty: 1
   }

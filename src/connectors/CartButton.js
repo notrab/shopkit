@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import { Consumer } from '../context'
 
-export default class CartConnector extends Component {
+export default class CartButtonConnector extends Component {
   state = {
     currentIndex: 0
   }

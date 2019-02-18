@@ -21,8 +21,8 @@
     "semantic-release": "semantic-release"
   },
   "dependencies": {
-    "@moltin/sdk": "^3.12.1",
-    "prop-types": "^15.6.2"
+    "@moltin/request": "1.4.3",
+    "prop-types": "15.7.2"
   },
   "devDependencies": {
     "babel-core": "6.26.3",
@@ -34,10 +34,10 @@
     "prettier": "1.16.4",
     "pretty-quick": "1.10.0",
     "rimraf": "2.6.3",
-    "rollup": "0.64.1",
+    "rollup": "1.2.1",
     "rollup-plugin-babel": "3.0.7",
-    "rollup-plugin-filesize": "2.0.0",
-    "rollup-plugin-node-resolve": "3.3.0",
+    "rollup-plugin-filesize": "6.0.1",
+    "rollup-plugin-node-resolve": "4.0.0",
     "semantic-release": "15.13.3"
   },
   "peerDependencies": {

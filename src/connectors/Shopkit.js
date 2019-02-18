@@ -1,18 +1,20 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { gateway as MoltinGateway } from '@moltin/sdk'
+import { createClient, createCartIdentifier } from '@moltin/request'
 
 import { Provider } from '../context'
 
 export default class Shopkit extends Component {
-  static PropTypes = {
+  static propTypes = {
     clientId: PropTypes.string.isRequired,
     color: PropTypes.string,
+    cartId: PropTypes.string,
     showCartOnSuccess: PropTypes.bool
   }
 
   static defaultProps = {
     color: '#FFE285',
+    cartId: createCartIdentifier(),
     showCartOnSuccess: false
   }
 
@@ -30,15 +32,14 @@ export default class Shopkit extends Component {
     }
   }
 
-  api = MoltinGateway({
+  api = new createClient({
     client_id: this.props.clientId,
     application: 'react-shopkit'
   })
 
   componentDidMount() {
     this.api
-      .Cart()
-      .Items()
+      .get(`carts/${this.props.cartId}/items`)
       .then(this.updateCartState)
       .catch(({ errors }) => console.log(errors))
   }
@@ -51,25 +52,31 @@ export default class Shopkit extends Component {
       meta
     })
 
-  _handleAddToCart = (id, qty) =>
+  _handleAddToCart = (id, quantity) =>
     this.api
-      .Cart()
-      .AddProduct(id, qty)
+      .post(`carts/${this.props.cartId}/items`, {
+        type: 'cart_item',
+        id,
+        quantity
+      })
       .then(this.updateCartState)
       .then(this.props.showCartOnSuccess && this._showCart)
       .catch(({ errors }) => console.log(errors))
 
-  _handleQuantityChange = (itemId, quantity) =>
+  _handleQuantityChange = (id, quantity) =>
     this.api
-      .Cart()
+      .put(`carts/${this.props.cartId}/items/${id}`, {
+        type: 'cart_item',
+        id,
+        quantity
+      })
       .UpdateItemQuantity(itemId, quantity)
       .then(this.updateCartState)
       .catch(({ errors }) => console.log(errors))
 
-  _handleRemoveFromCart = itemId =>
+  _handleRemoveFromCart = id =>
     this.api
-      .Cart()
-      .RemoveItem(itemId)
+      .delete(`carts/${this.props.cartId}/items/${id}`)
       .then(this.updateCartState)
       .catch(({ errors }) => console.log(errors))
 
@@ -82,11 +89,13 @@ export default class Shopkit extends Component {
     this.api.Cart().Checkout(customer, billing, shipping)
 
   render() {
+    const { children, ...props } = this.props
+
     return (
       <Provider
         value={{
           ...this.state,
-          ...this.props,
+          ...props,
           api: this.api,
           showCart: this._handleShowCart,
           addToCart: this._handleAddToCart,
@@ -94,7 +103,7 @@ export default class Shopkit extends Component {
           removeFromCart: this._handleRemoveFromCart,
           handleCheckout: this._handleCheckout
         }}>
-        {this.props.children}
+        {children}
       </Provider>
     )
   }

@@ -1,5 +1,5 @@
 export { default as Shopkit } from './connectors/Shopkit'
-export { default as Cart } from './connectors/Cart'
+export { default as CartButton } from './connectors/CartButton'
 export { default as Product } from './connectors/Product'
-export { default as Button } from './connectors/Button'
-export { default as ProductGrid } from './connectors/ProductGrid'
+export { default as BuyButton } from './connectors/BuyButton'
+// export { default as ProductGrid } from './connectors/ProductGrid'
