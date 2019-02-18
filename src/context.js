@@ -1,5 +1,5 @@
 import { createContext } from 'react'
 
-const context = createContext({})
+const context = createContext()
 
 export const { Provider, Consumer } = context

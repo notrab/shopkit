@@ -5,7 +5,7 @@ import { createClient, createCartIdentifier } from '@moltin/request'
 import { Provider } from '../context'
 
 export default class Shopkit extends Component {
-  static PropTypes = {
+  static propTypes = {
     clientId: PropTypes.string.isRequired,
     color: PropTypes.string,
     cartId: PropTypes.string,
@@ -39,7 +39,7 @@ export default class Shopkit extends Component {
 
   componentDidMount() {
     this.api
-      .get(`${this.props.cartId}/items`)
+      .get(`carts/${this.props.cartId}/items`)
       .then(this.updateCartState)
       .catch(({ errors }) => console.log(errors))
   }
@@ -54,7 +54,7 @@ export default class Shopkit extends Component {
 
   _handleAddToCart = (id, quantity) =>
     this.api
-      .post(`${this.props.cartId}/items`, {
+      .post(`carts/${this.props.cartId}/items`, {
         type: 'cart_item',
         id,
         quantity
@@ -65,7 +65,7 @@ export default class Shopkit extends Component {
 
   _handleQuantityChange = (id, quantity) =>
     this.api
-      .put(`${this.props.cartId}/items/${id}`, {
+      .put(`carts/${this.props.cartId}/items/${id}`, {
         type: 'cart_item',
         id,
         quantity
@@ -76,7 +76,7 @@ export default class Shopkit extends Component {
 
   _handleRemoveFromCart = id =>
     this.api
-      .delete(`${this.props.cartId}/items/${id}`)
+      .delete(`carts/${this.props.cartId}/items/${id}`)
       .then(this.updateCartState)
       .catch(({ errors }) => console.log(errors))
 
@@ -89,11 +89,13 @@ export default class Shopkit extends Component {
     this.api.Cart().Checkout(customer, billing, shipping)
 
   render() {
+    const { children, ...props } = this.props
+
     return (
       <Provider
         value={{
           ...this.state,
-          ...this.props,
+          ...props,
           api: this.api,
           showCart: this._handleShowCart,
           addToCart: this._handleAddToCart,
@@ -101,7 +103,7 @@ export default class Shopkit extends Component {
           removeFromCart: this._handleRemoveFromCart,
           handleCheckout: this._handleCheckout
         }}>
-        {this.props.children}
+        {children}
       </Provider>
     )
   }
