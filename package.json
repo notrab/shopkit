@@ -21,7 +21,7 @@
     "semantic-release": "semantic-release"
   },
   "dependencies": {
-    "@moltin/request": "1.4.3",
+    "@moltin/request": "2.0.2",
     "prop-types": "15.7.2"
   },
   "devDependencies": {
